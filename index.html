@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Megha Compliment Page</title>
+  <style>
+    :root {
+      --peach-light: #fff6f0;
+      --peach-base: #ffd1ba;
+      --peach-dark: #ff9e80;
+      --text-dark: #4a4a4a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: white;
+      color: var(--text-dark);
+      min-height: 100vh;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+    }
+
+    nav {
+      width: 100%;
+      background: white;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 16px;
+      border-radius: 0 0 20px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      color: var(--peach-dark);
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: var(--peach-base);
+      color: white;
+    }
+
+    h1 {
+      font-size: 2.2em;
+      margin: 40px 0 20px;
+      text-align: center;
+      color: var(--peach-dark);
+    }
+
+    .compliment {
+      font-size: 2em;
+      font-weight: bold;
+      color: var(--peach-dark);
+      margin: 20px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 10px;
+      background-color: var(--peach-dark);
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: var(--peach-base);
+    }
+
+    .reassurances {
+      margin-top: 30px;
+      max-width: 600px;
+      text-align: center;
+    }
+
+    .reassurances p {
+      margin: 10px 0;
+      font-style: italic;
+      color: var(--peach-dark);
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: radial-gradient(circle, var(--peach-base) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: sparkle 0.8s ease-out forwards;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    @keyframes sparkle {
+      0% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(2); }
+    }
+
+    @media screen and (max-width: 600px) {
+      h1 { font-size: 1.8em; }
+      .compliment { font-size: 1.5em; }
+      button { font-size: 1em; padding: 10px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Compliments</a>
+    <a href="letters.html">Letters</a>
+    <a href="trivia.html">Trivia</a>
+  </nav>
+
+  <h1>Megha, you are <span class="compliment" id="compliment">amazing</span></h1>
+  <div class="buttons">
+    <button onclick="changeCompliment(event)">Thank you ❤️</button>
+    <button onclick="addReassurance(event)">No I'm not 😢</button>
+  </div>
+  <div class="reassurances" id="reassuranceContainer"></div>
+
+  <script>
+    const compliments = [
+      "amazing", "hot", "sexy", "beautiful", "intelligent", "gorgeous",
+      "radiant", "stunning", "brilliant", "elegant", "charming", "adorable",
+      "precious", "fascinating", "enchanting", "wonderful", "cute", "captivating",
+      "mesmerizing", "breathtaking", "glorious", "delightful", "sparkling",
+      "dazzling", "graceful", "luminous", "lovely", "exquisite", "magnetic",
+      "angelic", "heavenly", "alluring", "bewitching", "dreamy", "radiating",
+      "soft-hearted", "inspiring", "sweet", "witty", "vibrant", "tender",
+      "gentle", "humble", "cheerful", "fearless", "bold", "stylish",
+      "ethereal", "classy", "soulful", "starry-eyed", "endearing",
+      "playful", "snuggly", "sparkly", "sensational", "serene", "sunny",
+      "bubbly", "joyful", "cozy", "affectionate", "compassionate",
+      "intuitive", "thoughtful", "caring", "pure", "soft", "sincere",
+      "vivacious", "fiery", "brave", "artistic", "wondrous", "golden",
+      "melodic", "magical", "supportive", "trustworthy", "nurturing",
+      "radiating love", "kind-hearted", "bold-hearted", "flawless",
+      "outstanding", "extraordinary", "endless", "everlasting",
+      "dream girl", "ultimate crush", "queen", "divine", "sunbeam",
+      "moonlight", "peachy", "rose-like", "poetic", "limitless"
+    ];
+
+    const reassurances = {
+  "amazing": ["You amaze me every single day."],
+  "hot": ["You're the definition of hot."],
+  "sexy": ["You're irresistible in every way."],
+  "beautiful": ["Your beauty is unmatched."],
+  "intelligent": ["You're one of the smartest people I know."],
+  "gorgeous": ["You turn heads everywhere."],
+  "radiant": ["You shine brighter than the sun."],
+  "stunning": ["You take my breath away every time."],
+  "brilliant": ["Your mind is a marvel."],
+  "elegant": ["You carry yourself with such grace."],
+  "charming": ["You charm everyone without trying."],
+  "adorable": ["You're so cute it's unfair."],
+  "precious": ["You're a treasure in my life."],
+  "fascinating": ["I could listen to you talk for hours."],
+  "enchanting": ["You're magic in human form."],
+  "wonderful": ["You make everything better."],
+  "cute": ["You're the definition of adorable."],
+  "captivating": ["I can't look away when you're near."],
+  "mesmerizing": ["You're impossible to ignore."],
+  "breathtaking": ["You leave me speechless every time."],
+  "glorious": ["You light up the world just by existing."],
+  "delightful": ["You're the joy of my life."],
+  "sparkling": ["Your eyes shine like stars."],
+  "dazzling": ["You're absolutely radiant."],
+  "graceful": ["You move with poetry in motion."],
+  "luminous": ["Your soul glows from within."],
+  "lovely": ["You're lovely in every way."],
+  "exquisite": ["You're beauty beyond compare."],
+  "magnetic": ["You're effortlessly attractive."],
+  "angelic": ["You're my angel on earth."],
+  "heavenly": ["You're a dream come true."],
+  "alluring": ["You pull me in with just a look."],
+  "bewitching": ["You're enchantingly beautiful."],
+  "dreamy": ["You're made of everything I dream about."],
+  "radiating": ["You radiate joy and beauty."],
+  "soft-hearted": ["Your kindness touches my soul."],
+  "inspiring": ["You make me want to be better."],
+  "sweet": ["You're sugar, spice, and everything nice."],
+  "witty": ["Your humor is irresistible."],
+  "vibrant": ["You bring color to my world."],
+  "tender": ["Your tenderness is a blessing."],
+  "gentle": ["You're calm and kind like a warm breeze."],
+  "humble": ["You stay grounded even with all your greatness."],
+  "cheerful": ["Your smile is contagious."],
+  "fearless": ["You face life boldly."],
+  "bold": ["You have a fierce, confident soul."],
+  "stylish": ["You’ve got flawless fashion sense."],
+  "ethereal": ["You're not from this world."],
+  "classy": ["You embody sophistication."],
+  "soulful": ["Your presence comforts the heart."],
+  "starry-eyed": ["You remind me of starlight."],
+  "endearing": ["Everything you do makes me adore you more."],
+  "playful": ["You make life more fun just by being you."],
+  "snuggly": ["You’re made for hugs."],
+  "sparkly": ["You're a glittering light in my life."],
+  "sensational": ["You're a show-stopper."],
+  "serene": ["You calm every storm inside me."],
+  "sunny": ["You're like sunshine on a rainy day."],
+  "bubbly": ["Your energy is infectious."],
+  "joyful": ["You bring joy wherever you go."],
+  "cozy": ["You're my safe space."],
+  "affectionate": ["You love in the warmest ways."],
+  "compassionate": ["You feel deeply and beautifully."],
+  "intuitive": ["You understand without words."],
+  "thoughtful": ["You notice every little thing that matters."],
+  "caring": ["You make people feel seen."],
+  "pure": ["You're the most genuine soul."],
+  "soft": ["You're gentle and warm in every way."],
+  "sincere": ["Every word from you feels true."],
+  "vivacious": ["You’re full of life and spirit."],
+  "fiery": ["You burn bright with passion."],
+  "brave": ["You’re courageous even when afraid."],
+  "artistic": ["You bring beauty into everything."],
+  "wondrous": ["You're a marvel in my life."],
+  "golden": ["You shine with warmth and kindness."],
+  "melodic": ["Your voice could soothe stars."],
+  "magical": ["You bring magic into my world."],
+  "supportive": ["You're always there when needed."],
+  "trustworthy": ["I trust you with my heart."],
+  "nurturing": ["You're a gentle guide and comfort."],
+  "radiating love": ["Your love is a force of nature."],
+  "kind-hearted": ["You are kindness in human form."],
+  "bold-hearted": ["You lead with fearless love."],
+  "flawless": ["You're perfect in your own way."],
+  "outstanding": ["You stand above the rest."],
+  "extraordinary": ["You're unlike anyone else."],
+  "endless": ["My admiration for you has no end."],
+  "everlasting": ["You leave a forever impact on me."],
+  "dream girl": ["You're the one from my dreams."],
+  "ultimate crush": ["I can't stop crushing on you."],
+  "queen": ["You rule my heart."],
+  "divine": ["You’re heavenly in every sense."],
+  "sunbeam": ["You warm me like the sun."],
+  "moonlight": ["You soothe me like the moon."],
+  "peachy": ["You're sweet and soft like a peach."],
+  "rose-like": ["Delicate, beautiful, and adored."],
+  "poetic": ["You're a living poem."],
+  "limitless": ["You are without bounds."],
+};
+    function changeCompliment(e) {
+      const compliment = compliments[Math.floor(Math.random() * compliments.length)];
+      document.getElementById("compliment").textContent = compliment;
+      document.getElementById("reassuranceContainer").innerHTML = "";
+      createSparkle(e);
+    }
+
+    function addReassurance(e) {
+      const current = document.getElementById("compliment").textContent;
+      const messages = reassurances[current] || ["I mean it."];
+      const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+
+      const container = document.getElementById("reassuranceContainer");
+      container.innerHTML = "";
+      const p = document.createElement("p");
+      p.textContent = randomMsg;
+      p.style.color = "var(--peach-dark)";
+      p.style.fontStyle = "italic";
+      container.appendChild(p);
+      createSparkle(e);
+    }
+
+    function createSparkle(e) {
+      const sparkle = document.createElement("div");
+      sparkle.className = "sparkle";
+      document.body.appendChild(sparkle);
+      sparkle.style.left = e.clientX + "px";
+      sparkle.style.top = e.clientY + "px";
+      setTimeout(() => sparkle.remove(), 800);
+    }
+  </script>
+</body>
+</html>
