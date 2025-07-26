@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spinning Gift Wheel for Megha</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffdee9 0%, #b5fffc 100%);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+    }
+    .wheel-container {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      margin-bottom: 20px;
+    }
+    .pointer {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-bottom: 30px solid #ff4081;
+      z-index: 2;
+    }
+    .wheel {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 6px solid #fff;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      overflow: hidden;
+      transform: rotate(0deg);
+      transition: transform 4s cubic-bezier(0.33, 1, 0.68, 1);
+    }
+    .wheel-segment {
+      position: absolute;
+      width: 50%;
+      height: 50%;
+      background-color: #ff8a80;
+      transform-origin: 100% 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #fff;
+    }
+    .wheel-segment:nth-child(2) { transform: rotate(60deg); background-color: #ffcc80; }
+    .wheel-segment:nth-child(3) { transform: rotate(120deg); background-color: #80cbc4; }
+    .wheel-segment:nth-child(4) { transform: rotate(180deg); background-color: #90caf9; }
+    .wheel-segment:nth-child(5) { transform: rotate(240deg); background-color: #ce93d8; }
+    .wheel-segment:nth-child(6) { transform: rotate(300deg); background-color: #a5d6a7; }
+
+    /* Make every segment say Gift */
+    .wheel-segment::after {
+      content: 'Gift';
+    }
+
+    .hidden { display: none; }
+    .message {
+      font-size: 1.5rem;
+      color: #d81b60;
+      text-align: center;
+      margin-top: 10px;
+    }
+    .button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      background-color: #ec407a;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      position: relative;
+    }
+    .moving {
+      animation: moveAround 1s infinite;
+    }
+    @keyframes moveAround {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(120px, -60px); }
+      50% { transform: translate(-120px, 60px); }
+      75% { transform: translate(60px, -120px); }
+      100% { transform: translate(0, 0); }
+    }
+    .final-message {
+      font-size: 1.5rem;
+      color: #ad1457;
+      text-align: center;
+      padding: 0 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wheel-container">
+    <div class="pointer"></div>
+    <div id="wheel" class="wheel">
+      <div class="wheel-segment"></div>
+      <div class="wheel-segment"></div>
+      <div class="wheel-segment"></div>
+      <div class="wheel-segment"></div>
+      <div class="wheel-segment"></div>
+      <div class="wheel-segment"></div>
+    </div>
+  </div>
+
+  <button id="spinButton" class="button">Spin</button>
+  <p id="message" class="message hidden">Congrats! You won a plushie and treats!</p>
+  <button id="noThanks" class="button hidden">No Thank You</button>
+  <p id="finalMessage" class="final-message hidden">
+    I love you so much Megha, giving you treats brings me so much joy. I am not doing it to compete, but I love you so much, and making you happy is my favorite thing to do.
+  </p>
+
+  <script>
+    const wheel = document.getElementById('wheel');
+    const spinButton = document.getElementById('spinButton');
+    const message = document.getElementById('message');
+    const noThanks = document.getElementById('noThanks');
+
+    let currentRotation = 0;
+
+    spinButton.addEventListener('click', () => {
+      // Spin wheel any number of times; since all segments say Gift, result is always Gift
+      const extraSpins = 5 * 360;
+      currentRotation += extraSpins;
+      wheel.style.transform = `rotate(${currentRotation}deg)`;
+
+      setTimeout(() => {
+        message.classList.remove('hidden');
+        noThanks.classList.remove('hidden');
+        spinButton.classList.add('hidden');
+      }, 4000);
+    });
+
+    let moving = false;
+    noThanks.addEventListener('click', () => {
+      if (!moving) {
+        noThanks.classList.add('moving');
+        moving = true;
+      } else {
+        document.getElementById('finalMessage').classList.remove('hidden');
+        noThanks.classList.add('hidden');
+        wheel.classList.add('hidden');
+        message.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
