@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Letters for Megha</title>
+  <style>
+    :root {
+      --peach-light: #fff6f0;
+      --peach-base: #ffd1ba;
+      --peach-dark: #ff9e80;
+      --text-dark: #4a4a4a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--peach-light);
+      color: var(--text-dark);
+      padding: 20px;
+      background-image: url('data:image/svg+xml;utf8,<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><text x="10" y="20" font-size="24" fill="%23ffb6b9" fill-opacity="0.15">❤ ❤ ❤ ❤ ❤</text></svg>');
+      background-repeat: repeat;
+    }
+
+    nav {
+      width: 100%;
+      background: white;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 16px;
+      border-radius: 0 0 20px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      color: var(--peach-dark);
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: var(--peach-base);
+      color: white;
+    }
+
+    .login-container {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      margin: 60px auto;
+    }
+
+    h1, h2 {
+      color: var(--peach-dark);
+      text-align: center;
+      margin: 30px 0 20px;
+    }
+
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 2px solid var(--peach-base);
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+
+    button {
+      padding: 12px 24px;
+      background-color: var(--peach-dark);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: var(--peach-base);
+    }
+
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+
+    .letter-box {
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      margin: 20px auto;
+      max-width: 800px;
+      box-shadow: 0 6px 16px rgba(255, 173, 153, 0.2);
+      font-family: 'Georgia', serif;
+      position: relative;
+      border: 1px dashed var(--peach-base);
+      transition: transform 0.2s ease;
+    }
+
+    .letter-box:hover {
+      transform: scale(1.01);
+    }
+
+    .letter-box::before {
+      content: "❤️";
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 1.4rem;
+      opacity: 0.2;
+    }
+
+    .letter-meta {
+      font-style: italic;
+      color: #b76b57;
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+    }
+
+    .letter-body {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: #4a3f3f;
+      white-space: pre-wrap;
+    }
+
+    @media screen and (max-width: 600px) {
+      .letter-box {
+        margin: 16px 10px;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Compliments</a>
+    <a href="#">Letters</a>
+    <a href="trivia.html">Trivia</a>
+    <a href="meters.html">Meters</a>
+  </nav>
+
+  <div id="login-section" class="login-container">
+    <h2>Enter Password to View Letters</h2>
+    <input type="password" id="password" placeholder="Enter password..." />
+    <button onclick="checkPassword()">Unlock</button>
+    <div id="error" class="error"></div>
+  </div>
+
+  <div id="letters-section" style="display: none;">
+    <h1>Letters to Megha</h1>
+<div class="letter-box">
+  <div class="letter-meta">Date: 2025-08-08 | From: Ekansh | To: Megha</div>
+  <div class="letter-body">
+My babybooooo, My Meghu,<br /><br />
+
+I love you so sooooooooooooo muchhhhh, I love you regardless of everything and I love you even more than I did before today. I hope you are feeling better and you don't have sore tits, although I can't suck them, I fapped one out to them as respect. And I hope you are feeling better today babyboooo, make sure you drink a lot of water, and sleep in the shuttle my rasgulla.<br /><br />
+
+Now, first of all, what ChatGPT told you is all lies, you don't affect me at all babyboo, I am literally so madly in love with you, what affects me is when you don't take care of yourself, and when these little things happen, like you burning your hand, and not eating your meals properly, not sleeping properly, just stressing yourself more than you should. I know you "can", but you "shouldn't". You are just a little baby, and even though you might feel okay putting strain on your body, I don't cause you are my little baby and I am not there with you right now to help you with everything so I can only ask you to relax a little bit. Every single time you do anything like this, I swear I get this really sudden headache in the front right part of my brain, and it just stays there until you rest. Like, I know we fought today, and I was feeling so bad, but then you sent me a photo of you eating food, doing skincare and of the chia seeds, and then in a minute, I felt soooo sooooooo good, which doesn't make any sense I know, but just knowing that you are physically fine means so much to me. I honestly want to tell you so many things but I don't want to make it awkward or make it feel like I am schooling you. I googled a few periods tricks, and yk, you can use 2 pads like in a T-position to prevent leakage, and even though they might be big you should just get the XL size, I read there is no harm in doing that, also I read a bit that hot water bags can help with cramps, putting them on your stomach, so I will get you one, and the reason I wanted to get you juice, is because it would help in blood regeneration, whatever you lose during your periods. And I just want to do so many things babyboo, if you let me, and I wanna know everything, when you are cramping, when your blood flow is high or low, and honestly I would really do so many more things which I am too shy to mention right now when we live together 😭.<br /><br />
+
+So, to sum this up my chand, I just wanted to say that I do get worried about you, and I promise on everything, I don't do it to annoy you, I just wanna care for you soooo sooooooo much, and yes I do tell you what to do, and yes you are not obligated to follow anything I say, but from my side, I only say things that would be good for you, I would never make you do anything that would even do you 0.000001% harm. And I also want to help you with your office work, I know you are not going to abhi, but I will ask you for it every single day, cause I genuinely want to do anything that would make your day a little easier. At the end of the day, you are a little baby, a little pretty girl. I feel like deep down you know that you try to do way more, and you try to stop me from doing anything, which is really very sweet, I have no idea what I did to deserve so much, but there are a million things I want to do for you baby, and you have to let me, you are the woman I chose to love so let me love you properly, I don't want there to be any conditions, any regrets ki main yeh kar sakta tha woh kar sakta tha, and I just wanna love you and love you and love you and love youuuu every single day Meghu.<br /><br />
+
+Also, another thing I wanted to say, you are genuinely the most beautiful, the most pretty girl I have ever met, I will keep saying it I will say it a 100 times over. You are so beautiful Megha, your hair, your eyes, your cheeks, your eyelashes, your eyebrows, your lips, your neck, your ears, I really really love youuuu, and I am so lucky to have a pretty girl, a pretty girl like you, the prettiest of all pretty girls. You are beautiful, hot, sexy, cute, gorgeous and every single word like this was invented for you. You can call me a liar all you want, but you are genuinely pretty from every single angle, and I want to kiss all over your face and your body, and I want to run my fingers through your hair. You are literally so pretty, sometimes when I am looking at your pictures, I start kicking my feet out of frustration because I don't know how to treat such a pretty girl and cause you are not with me as my lil cuddly bear.<br /><br />
+
+So, to answer your questions - <br /><br />
+
+1) If someone asks you what I am to you, what would you say?<br /><br />
+I would say your are my girlfriend, and I hope one day I will say that you are my wife. If they ask me about you, I wil tell them you are me in girl form if I was mature, intelligent and a hottie 5'2 girl from Bengal. I would tell them you have the cutest accent and that you are as cute as they come, and I would tell them that you are the most important person in my life and also my best friend.<br /><br />
+
+2) What are 3 things you love about me?<br /><br />
+Well, that is hard. But I would say that, one, how much you love me unconditionally, and how much you care for me, it is the best feeling I have ever felt, and I am sooooooo lucky to get your love my baby. Second, just how perfect every single quality of yours is, you can do so many things, you can cook, you can sing, you are a lawyer, and even other things like, how you get me to open up and give me good advice. I would trust anything you say baby. And third, that you are literally the most beautiful human that has ever been born and ever will be born hehe.<br /><br />
+
+3) What makes me different from other girls you have dated or talked to in the past?<br /><br />
+How I love being myself around you. I genuinely feel really happy around you, it is taking me a while to accept it that you are really interested in my things, and you think I am pretty and have a nice voice, but I love to record voice notes for you, I love to send you my pictures, tell you about Cyberpunk, and I truly feel happy nowadays without any ifs and buts. You are also just insanely gorgeous and extremely smart, which I can't say about the girl I have dated, or really about any girl at all. You are the most perfect combination of everything in a human, and you have a girl pp, which is better for me.<br /><br />
+
+4) What do you dislike about me?<br /><br />
+Honestly, nothing. I would say that you doubt yourself so much, but I understand now where it comes from, you just had shitty people in your past. But I will make you believe every single word I say because I really think everything I say about you. I would ask you to take more care of yourself, not work that hard, let me do some more stuff for you, and I think I have made these dislikes pretty clear now many times, you just gotta let me love you more baby. It is just building up inside me.<br /><br />
+
+5) What's your favourite thing about me?<br /><br />
+You.<br /><br />
+
+6) What was your first impression of me?<br /><br />
+Answered, That you are really cool and I want to become more like you and enjoy life. Also that you know about so much stuff, and that is really impressive, you know so much about obscure topics, even I don't know anything about, and that rarely happens. And I really loved your vibe, and just talking to you.<br /><br />
+
+7) What are three things I say a lot?<br /><br />
+"Liar" to me complimenting you<br /><br />
+"You literally do more than me, I don't do anything" while carrying this relationship on your back<br /><br />
+"I am not that good" shutup please shutup please shutup please shutup please shutup please shutup please<br /><br />
+
+8) What is one thing you hope for our future?<br /><br />
+Seeing you naked daily. But, I would say, really making you believe by heart how good you are, and erasing all doubts about you. Taking you away from there, to our home so you can live stress free worrying about nothing, I would cook for you and do all your chores, I would literally brush your teeth and give you baths. I just want to spoil you quite a lot and take you shopping to many places, and I want to give you the life that you should have had always.<br /><br />
+
+9) If we were together right now, what would we be doing?<br /><br />
+One of two things, either I would be cuddling you naked, with me as the big spoon, sleeping with 2 fingers inside of you, and brushing your hair gently, or you would be cuddling me with a finger inside me, and brushing my hair gently.<br /><br />
+
+10) How was your life before we got together?<br /><br />
+Honestly, I don't even remember baby, how did I even survive without you? I was quite depressed, contemplating suicide, just getting by day to day, and really had given up on everything, but then somehow you happened. I got you. I don't believe in god, but what kind of coincidence is this, that the most perfect girl just walked into my life like that? I am the luckiest person on Earth, and I will have you to thank for everything, for everything in my career, my life, everything I achieve, it will be cause you were here, cutie.<br /><br />
+
+11) What would we be doing right now if we never met?<br /><br />
+You? Getting head from a better guy than me I hope.<br /><br />
+Me, I would say just the same, getting by, not much else. I couldn't even think that somebody like you could exist, so I don't think I would be sad for not being the one giving you head, I just would have gotten by.<br /><br />
+
+Anyways baby, I love you so much. I love you. I love you. I love you and I miss you. Have a nice day! My rasmalai.<br /><br />
+
+I love you babyboo.<br /><br />
+
+❤️<br />
+Ekansh
+  </div>
+</div>
+<div class="letter-box">
+  <div class="letter-meta">Date: 2025-08-06 | From: Ekansh | To: Megha</div>
+  <div class="letter-body">
+Good afternoon meghuuuu,<br /><br />
+
+I love youuu sooooooooooooooooo muchhhhh.<br /><br />
+
+See, nothing can stop me from writing a letter for you, I am good at finding loopholes, like a lawyer hehe.<br /><br />
+
+First of all, I am so sorry for yesterday, I love you so muchhh, and I was super worried about you, but I did extra for sure, and I shouldn't have acted like that, so I am really sorry meghu. But if you want me to not worry this much about you, that will never work, I have like 500 questions going on in my head all day long and if I asked all of them you would just get annoyed because none of them are flirty or sweet, just stuff about you and your life. I hope you understand the place I come from, however I do apologize for acting like that.<br /><br />
+
+I love youuu soooooooo much, I never got around to say this but you looked soooo beautiful and so happy in that green top, in the video of you reaching 1400 rating in chess, and by the way, I also noticed the mehendi on your hands hehe, nice boobies. I saw everything and damn, I can't wait 👉👈👉👈👉👈👉👈👉👈👉👈👉👈👉👈.<br /><br />
+
+You are sachi so soooooooooo beautiful, and a pretty little girl like you should be properly taken care of, my babyyyy, you are my favourite girl on this whole planet, and sometimes that just leads to me being too worried about you, I don't want you to go through even a little bit of pain, physically or mentally, I hope you tell me from now on if you haven't had lunch or anything small, you would never ever trouble me, and you should trouble me, I am here for you only.<br /><br />
+
+I love you babyboo.<br /><br />
+
+❤️<br />
+Ekansh
+  </div>
+</div>
+<div class="letter-box">
+  <div class="letter-meta">Date: 2025-08-05 | From: Ekansh | To: Megha</div>
+  <div class="letter-body">
+Muah muah muah muahhhh my kitten,<br /><br />
+
+I meghhhaaaaaaaaa youuuu. &lt;3<br /><br />
+
+Thank you soooooo much for the treats today and thank youuuu soo much for the comic, I feel so happy and I feel really overwhelmed with your love. I can't express how much you mean to me Meghu. I really want to cuddle you and just lie there and see you sleep. You are the love of my life. I genuinely have no words left to express my love to you. There is not anything that I wouldn't do for you. I love you so much, thank you for making me so happy and thank you for making me the luckiest man on this planet. I am going to love you with my little heart for my entire life. I love youuuu soooo sooooooooooooo muchhh. Everytime you make me happy, I feel emotional, I feel overwhelmed, I feel horny and I feel this pain in my heart that I wouldn't be able to show you the love you deserve. But I will love you as much as I can.<br /><br />
+
+I love you Meghu, I love you I love you I love youuuuu, I love you forever and ever and everrrrrrr.<br /><br />
+
+I literally count every single day multiple times when are we going to meet, I plan it out, I go to irctc, I go to check flights, hotels and everything, and I just can't wait for the day to come. I can't wait to just meet you for the first time, my heart starts racing just thinking about it, I won't be able to handle you, I will be sooooo nervous haha, I might start shaking from nervousness, but I will try to show my love for you. The time we video called, I couldn't even control myself from smiling everytime you looked at me, how would I control myself in real life? I keep looking at your photos and videos, I love all of them, you are my little babybooo, my ladybug, you are my mishit doi.<br /><br />
+
+I love you Megha, I love you and you never have to doubt it for a single millisecond.<br /><br />
+
+❤️<br />
+Ekansh
+  </div>
+</div>
+<div class="letter-box">
+  <div class="letter-meta">Date: 2025-08-04 | From: Ekansh | To: Megha</div>
+  <div class="letter-body">
+My one and only ganeshu,<br /><br />
+
+I love youuu sooo sooooo muchhhh, and I know you won't admit it, but you slept last night thinking that my love for you isn't the same.<br /><br />
+
+Even though we might be going through some turbulent waters, I swear on my life, I love you more than I did yesterday. I think about you the moment I sleep, and I think about you the moment I wake up. I love you I love you I love you I love you I love you I love you I love you I love you I love you I love you I love you I love you I love you, and I love Megha Shaw for the rest of my life.<br /><br />
+
+Well, I will admit a few things that I told myself I wouldn't tell you, just like I told you a lot of other things I wouldn't tell.<br /><br />
+
+I am not perfect, first of all, and yes I do admit, I have been slipping with my love and affection for you, but I swear it is only out of worry for you, jaise aaj subhe waali baat, I asked you soooooo many times, I knew something was up, even if you do say that ki tumhe affect nahi pada tha uska. Just tell me these things baby, I cried a bit after you told me, isliye I replied todha neutrally, I just want to love you in your worst times, and okay if I did order blinkit, so what???? You are my babygirl, you will be my babygirl always, please please please tell me these asap, and you literally cried, I feel like crying right now even thinking that, I wish I could have comforted you. I love you so much, and yes we haven't met but you are my one.<br /><br />
+
+You are very beautiful, yes lol I am too horny, but I get turned on even by things I shouldn't about you, like your hands, or even just when I hear your voice notes, your green tshirt video, you are genuinely the most beautiful girl I have met, and I can swear on this. I feel so jealous everytime you tell me about Nishant or Shashank, and it kinda ruins my mood lol, I only want you to be mine, screw them. You will only be mine. I don't want you to be anybody else's.<br /><br />
+
+I love you babygirl, I love you to the moon and back and then to the edge of the universe and then to the other edge and then to Delhi to Naihati to BlinkIt warehouse to KFC to Neptune to Saturn and then to our future home, Love youuu my baby, muah muah. I literally want to marry you right now.<br /><br />
+
+❤️<br />
+Ekansh
+  </div>
+</div>
+<div class="letter-box">
+  <div class="letter-meta">Date: 2025-08-02 | From: Ekansh | To: Megha</div>
+  <div class="letter-body">
+Dear Baby,<br /><br />
+
+I meghhaaaa youuuuu. &lt;3<br /><br />
+
+I just wanted to let you know how beautiful you are, I literally cannot take my eyes off of you, and I want to let you know how pretty and gorgeous you are. You look good in hot dresses, in traditional, when you are about to sleep, when you just came out of the shower, you are genuinely soooo beautiful.<br /><br />
+
+Thank youuuuu for the little comic of us, it is the cutest thing I have ever seen, and I can't stop smiling every single time I look at it. The page with your lip marks is honestly soooo romantic, made of the kitkat wrapper, and the little hearts of the nutties box, it makes me melt. I love you so much, and I just want to kiss you so hard and let you know just how much I love you and how perfect I think you are.<br /><br />
+
+You are literally an angel of heaven, and I don't even mean it as a compliment. You better start accepting my compliments cause I ain't giving up, there are a million things I want to do with you, so I am keeping you for the rest of your life hehe.<br /><br />
+
+I megghaaaaaa youuuuuuuuuu &lt;3<br /><br />
+
+❤️<br />
+Ekansh
+  </div>
+</div>
+<div class="letter-box">
+  <div class="letter-meta">Date: 2025-08-01 | From: Ekansh | To: Megha</div>
+  <div class="letter-body">
+Dear kishmish,<br /><br />
+
+I wish you a very veryyyy happy girlfriend's day!<br /><br />
+
+Although you are not officially my girlfriend, you are unofficially my wife, and I just want to thank you so much for being in my life, you big beautiful perfect little baby.<br /><br />
+
+The time I have spent with you has been perfect, you are unbelievably gorgeous, extremely kind, and I love you so much Megha. I want to tell you how much you mean to me, but I will never be able to. I just want you to know that, there is not a single time during the entirety of our relationship, anything has happened that even made my love for you decrease even 0.000001%. I love you more day by day, and there is absolutely nothing that you could say that would make me stop chasing you like a lunatic. I love you to the moon and back. And I want you to know that you are perfect as you are, never change anything about yourself.<br /><br />
+
+And I am sorry for annoying you, and not being my best self for you last night. I know you were upset and I am very very sorry. Thank you for being yourself with me, never change that and if there is anything going through your mind, you just need to tell me, and we will solve it together.<br /><br />
+
+Also, just wanted to say that you are so sooooo smart. That legal notice was so hot, how did you even write that so fast, are you the most talented lawyer in the world or what? Better Call Megha!!!!<br /><br />
+
+❤️<br />
+Ekansh
+  </div>
+</div>
+<div class="letter-box">
+  <div class="letter-meta">Date: 2025-07-29 | From: Ekansh | To: Megha</div>
+  <div class="letter-body">
+Dear Megha,<br /><br />
+
+I love you. I want to open up to you so bad, I want to, and I want to tell you everything and I want you to hold me and hug me and kiss me everywhere, it would feel so nice. Telling you everything feels so good and so nice, I feel really good. Thank you for accepting me meghu, I am such a broken person. Yet you love me so much, I could never even dream of a girl like you, you are so perfect, I honestly wanna marry you right now, and I want to just hold you and sleep and not wake up for a while.<br /><br />
+
+Not only this, but you also have a nice booty, hehe. Good good :)<br /><br />
+
+I want to kiss you so badly, I am genuinely crying right now, and I hate life that you had to be so far. I wanna hold youuu ahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh. Please hold me in your arms, I need to let so many emotions out megha, they are all inside me and just hug me please, hug me, touch me everywhere, kiss me everywhere, I need this, and only from you. Thank you.<br /><br />
+
+I am very sorry for what happened today, I should have been more clear, and I should have cleared everything before. It is my fault, and I apologise, I am very sorry for making you cry, and I am sorry for not being who you deserve today. I love you, I wanna carry you in my arms while you are naked, and I just want to feel you baby, I just want to feel your skin, and I want to get used to it, you are lovely, I love you. I love you I love you.<br /><br />
+
+I will open about more things, okay? I will try to, but make sure to get enough sleep babyboo, I feel so bad, I wish I could give you all my sleep, I am so sorry. I love you so much, just be honest with me, if you are not having lunch then tell me cutiepie, okie? <br /><br />
+
+We are one, we will deal with all of it together, all of it. It is only us against everybody else &lt;3.<br /><br />
+
+Also, nice butt.<br /><br />
+
+❤️<br />
+Ekansh
+  </div>
+</div>
+<div class="letter-box">
+  <div class="letter-meta">Date: 2025-07-28 | From: Ekansh | To: Megha</div>
+  <div class="letter-body">
+My sweet potato,<br /><br />
+
+I love youuuuuuuu.<br /><br />
+
+I just want to let you know how much I love you my baby. You mean so much to me.<br /><br />
+
+I feel so comforted around you, and so safe, I feel like being myself, I don't feel like I don't have to not send voice notes cause I have a bad voice or I look bad. If anything, I can't wait until you will see me naked, I just want you to see all of me. You make me feel good, not even normal, but good in my own skin. Which I can't say about anybody else.<br /><br />
+
+You made me open up about my trauma and you made me feel not ashamed about it. Even if you say this is not true, but I know, everybody would not be like this, and I am very grateful I told you as much as I did and there are so many other things I feel like I am ready to share with you, thank you meghuu.<br /><br />
+
+And I want to make you feel how good you are, I want you to feel that you are one of the best girls I have ever talked to, and the best person in my life. I trust you and I love you. I want you to feel your worth because you are so precious and you have so many qualities that I want to copy paste to myself. I want to be around you, and learn from you and I want to hug you and kiss you and make you feel how much love is filled inside me for you. I love you. My sweetheart. Thank you for being yourself with me, I would not change anything about you, I swear YOU are one of a kind meghu, and I am so scared to lose you cause I will never meet somebody like you.<br /><br />
+
+I love you. Grow old with me, yeah?<br /><br />
+
+❤️<br />
+Ekansh
+  </div>
+</div>
+<div class="letter-box">
+  <div class="letter-meta">Date: 2025-07-25 | From: Ekansh | To: Megha</div>
+  <div class="letter-body">
+My babygirl,<br /><br />
+
+I love you so much. I love you. One lifetime with you is so not enough.<br /><br />
+
+I love you so much. I want to hug you and cuddle you for my whole life. Why do we need to do jobs, I just want to cuddle you, and feel you against me. I love you so much my meghu, my sweetheart, I love you I love you I love you.<br /><br />
+
+Thank you for the treat today, it was soooo sweet. I was controlling myself smiling in front of others. The ice cream, the nutties, the chocolate, the oreo shake and the waffles were so cute. I am kissing lilac right now, I miss you so much. You are straight out of a dream. I am half expecting I am going to wake up anytime now. How are you even real? Sach btao, what is your plan with me, are you going to sell my organs, or kidnap me? You can kidnap me, I literally want so badly to be your pet. Ahhhhhhh, this girl.<br /><br />
+
+Btwwww, sooo prettyyyyyy????? How are you sooooo beautiful? HOWWWW........I want to keep you in my eye sight all day long cause oh my god, you are so beautiful megha. I would love you even if you weren't but wow, my luck is insane. I pulled the baddest baddie.<br /><br />
+
+Also, I just wanted to say that I love you so much, I am kinda getting desperate, I want to meet you so badly and just hug you. I am literally not breaking that hug, you will be the one who will break that hug, I am never ever breaking it. I megha you &lt;3.<br /><br />
+
+My pookie dookie. If you are reading this, please smile, you deserve to smile all day long. I love you, I love you so much. I am too obsessed. I just want you. I will get you tattood on my retinas so I can always see you.<br /><br />
+
+And thank you for making me feel happy, you make me feel like I belong, without any conditions. I will never get bored of you.<br /><br />
+
+❤️<br />
+Ekansh
+  </div>
+</div>
+<div class="letter-box">
+  <div class="letter-meta">Date: 2025-07-23 | From: Ekansh | To: Megha</div>
+  <div class="letter-body">
+    Dear Megha,<br /><br />
+
+    I love you to the moon and back, and I megha you so much.<br /><br />
+
+    I can't stop thinking about my future with you, you told me why are we thinking so far ahead in the future. For me personally, talking about all that made me feel so safe and so cozy, and I felt really happy. Your presence, in any form, brings me so much comfort and you make me feel like I am the happiest man on Earth. Thank you for that.<br /><br />
+
+    Thank you for listening to my things, my boring yap sessions, what I feel like, what I think, and I want to listen you do the same. I want to know everything about you. I want to get to the bottom of your brain and drink every single drop of your memories.<br /><br />
+
+    Please please give me some of your pixie dust. I want to get high on your pixie dust, it would be so magical, it would be like I am in the heavens, my babygirl. Where do I press the fast forward button and skip to you being with me, I want to hug you and cuddle you so badly.<br /><br />
+
+    Thank you for being honest with me Meghu, I will always megha you. You little baby. Mera chota sa bacha. You are going to be spoon fed all day, fir main tumhe apni godi mein lori suna kar sula diya karunga, and I will kiss your forehead and brush your cheeks when you are asleep. Ahhhhhhhhhhhhhhhh, it feels so good to think about too. I love you.<br /><br />
+
+    Muah muah muah muah muah muah muah muah muah muah muah muah muah muah muah muah on every single part of your body.<br /><br />
+
+    ❤️<br />
+    Ekansh
+  </div>
+</div>
+
+<div class="letter-box">
+  <div class="letter-meta">Date: 2025-07-22 | From: Ekansh | To: Megha</div>
+  <div class="letter-body">
+    Hii babyboo, good morning,<br /><br />
+
+    How are you doing? I miss you so much. I wish I could hug you right now. I will put fevi quick on my body and hug you so you are stuck with me.<br /><br />
+
+    Thank you so much for yesterday, thank you for being so perfect to me. You pushed me to open up, and thank you so much for listening to me and comforting me. I owe you a lot.<br /><br />
+
+    And I also wanted to let you know how perfect you are my baby. I am so sorry that I wasn't there to protect you before and I am sorry that I let somebody do that to you. I promise you that nobody will be able to put a hand from you from now, and I will love you like the beautiful pretty and kind girl you are. Thank you so much for being yourself Meghu. Thank you so much for being the girl that I love. I love you, and I love you and I love you.<br /><br />
+
+    You are my babydoll, my princess, my cutiepie, my baby, my little girl, and my favourite person on Earth.<br /><br />
+
+    I love you Megha Shaw.<br /><br />
+
+    ❤️<br />
+    Ekansh
+  </div>
+</div>
+
+<div class="letter-box">
+  <div class="letter-meta">Date: 2025-07-17 | From: Ekansh | To: Megha</div>
+  <div class="letter-body">
+    Dear Ms. Shaw,<br /><br />
+
+    Hi, I hope you are doing amazing, and I hope you have a beautiful day — as beautiful as you.<br /><br />
+
+    But that will be really hard, because you are the most beautiful thing in this universe. Born too late to see dinosaurs, born too early to explore space, but born at the right time to be with the most beautiful girl to ever live. I love you so much. I want you to lie on top of me and I want to whisper in your ears every single thing about you I am obsessed with. I wish I could freeze time and just look at you for eternity.<br /><br />
+
+    Pretty face, pretty nose, pretty eyes, pretty lips, pretty hair, nice boobs, good body, and hands I want to put a ring on. Hehe.<br /><br />
+
+    I wanted to thank you — I will thank you every day I can in my life — because you are the best person I have ever met, and you make me smile all day. Even though my jaw has started to hurt from all the smiling and my heart can't handle your sweetness.<br /><br />
+
+    I love you a lot Meghu. I am missing you, I am dreaming about you, and I hope I am having very sweet dreams about you — where I am holding your hands and looking into your eyes. You are genuinely so cool and so amazing. I am lucky to have you in my life — and so is anybody.<br /><br />
+
+    Never change and keep smiling cutie.<br />
+    And keep yourself hydrated.<br /><br />
+
+    ❤️
+  </div>
+</div>
+
+    <div class="letter-box">
+  <div class="letter-meta">Date: 2025-07-15 | From: Ekansh | To: Megha</div>
+  <div class="letter-body">
+Dear sweetheart,<br /><br />
+
+    Good morning to the prettiest girl on the planet. I hope you have a lovely day ahead.<br /><br />
+
+    Thank you so much for making me feel safe around you Megha, I feel like you are going to become my home in the future, wherever you go. I know all my secrets are safe with you, and I know you don't judge me for anything. It feels much better after sharing everything with you. You are slowly erasing all my problems from life. I hope I can make you feel like that too. There is absolutely nothing you could say that would make me go away from you. I feel like I would only love you more and more.<br /><br />
+
+    I wanna watch the GOT movie with you sooooo bad. In a theatre. There is so much upcoming stuff we need to see — this and the next Dune movie, and so much more. You need to move to Delhi ASAP because we have so much stuff on our watchlist, we need to binge it (it is just for binging everything pka, not cause I am gonna kidnap you and make you marry me). Yes, and your Boardroom Cafe is already here and ready for you to start working in, so jaldi se ajao (not luring you in pka).<br /><br />
+
+    I wanna kiss you everywhere and tell you how beautiful you are. Like kiss your eyes and tell you I see my world in them, kiss your nose and tell you how cute it is, etc. You are just so damn beautiful. You are really beautiful, just so gorgeous, and so cute, and so pretty, and good-looking from every single angle. Absolute baddie! You are even more beautiful than sunsets and even more cozy. Thank God for taking His time with you!!<br /><br />
+
+    I am so happy you are still here. I feel like my honeymoon period has begun to fade with you — and I feel comfortable and relaxed around you. I don't feel a bit of regret that you are who I have a crush on. I don't feel like I have to make you happy — everything comes naturally. And I feel like my feelings are very solid for you, and nothing would be able to dilute them even a bit. I genuinely like you so much as a person.<br /><br />
+
+    ❤️
+  </div>
+</div>
+    <div class="letter-box">
+  <div class="letter-meta">Date: 2025-07-14 | From: Ekansh | To: Megha</div>
+  <div class="letter-body">
+    Dear Megha,<br /><br />
+
+    Thank you so much for today. I am still blushing from the endless compliments you gave me. I have said this many times but it can't be said enough times that you are such an amazing person.<br /><br />
+
+    I already hold you so dear to me and honestly if you told me to do anything for you, I would give it the best shot I can even if I can't do it, and I hope you know, whatever problem arises for you, you need to share it with me cause it is our problem. You can literally share anything to me, at any time, never think if it is the right time or not.<br /><br />
+
+    I wish we meet really soon cause I can't stop thinking about you. I just wanna see your beauty in real life, and see how pretty you really are. I might get a heart attack to be honest when I look into your eyes. I wanna touch you, and hold your cheeks and see how soft they really are. So many things I wanna do with you and to you. I want to hold you and tell you that I love you so many times.<br /><br />
+
+    You are so fucking amazing, like stop making me fall in love with you even more. Do you know I won't literally be able to fall in love with anybody else now cause I met you? Honestly, you should take the blame of being so perfect and being so nice to me. I hope you do know that I will always blame you for it.<br /><br />
+
+    You seem like the most genuine person on earth, you listen to everything I say and you remember it, that means soooooo much to me I can't tell you how much that means to me, and for some reason you are so sweet to me. Please let me catch up lol, you are literally winning this battle by a landslide. Every second you are with me, I am smiling so much that my jaw starts hurting. You are allowed to make my jaw hurt, but make it hurt by different things yk hehe.<br /><br />
+
+    I hope you have an amazing day Meghu, thank you for being yourself. Please don't change anything about you, I love you so much as you are, and I want to make you feel it too when I meet you. I wanna take you out on nice dates, get you so many gifts and I want to make you feel safe and make you feel like you are at home. I feel like protecting you from everything bad, you are literally the most cute and innocent person ever.<br /><br />
+
+    I love you and I miss you, can't wait for you to be back.<br /><br />
+
+    ❤️
+  </div>
+</div>
+    <div class="letter-box">
+  <div class="letter-meta">Date: 2025-07-13 | From: Ekansh | To: Megha</div>
+  <div class="letter-body">
+        Dear Baby,<br /><br />
+
+        Hiiii, have been skipping letters for a few days now so I will try to get back into habit.<br />
+        First of all, I didn't really get to express just how pretty you are. I have looked at the video you let me save countless times. You are soooooo pretty. Your eyes are literally so perfect, and your nose, your cheeks, and your lips. I can't stop looking at you. I love the way your hair falls on your shoulders. I genuinely wanna hold you and hug you tightly for so long. You look so good, I can't believe still that you look so good.<br /><br />
+
+        I want to thank you so much for doing so much for me and being here for me. You have no idea — pretty much every other text from you makes me smile ear to ear.<br /><br />
+
+        Thank you so much for being yourself, I don't want you to change ever, even a bit.<br />
+        I really want to meet you so badly, I want to be near you. I feel frustrated, wish we could skip to the days where we are near each other. I am going to take care of you for all my life.<br /><br />
+
+        Also, sorry for sending you to study. I hope you know I only say it for you. My greedy self wants you to be on top of me instead.<br /><br />
+
+        ❤️
+  </div>
+</div>
+
+    <div class="letter-box">
+  <div class="letter-meta">Date: 2025-07-11 | From: Ekansh | To: Megha</div>
+  <div class="letter-body">
+   Hey Megha,<br />
+    I just wanted to say how much I adore you.<br />
+    Every conversation with you makes my day brighter.<br />
+    Your laugh, your mind, your kindness — all of it inspires me.<br /><br />
+
+    You make life feel a little more like magic every day.<br />
+    Thank you for being you 💖<br /><br />
+
+         With all my love,<br />
+          Ekansh
+  </div>
+</div>
+
+
+  </div>
+
+  <script>
+    function checkPassword() {
+      const input = document.getElementById('password').value;
+      if (input === 'meghu1211') {
+        document.getElementById('login-section').style.display = 'none';
+        document.getElementById('letters-section').style.display = 'block';
+      } else {
+        document.getElementById('error').textContent = 'Incorrect password, try again.';
+      }
+    }
+  </script>
+</body>
+</html>
