@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Megha Compliment Page</title>
+  <style>
+    :root {
+      --peach-light: #fff6f0;
+      --peach-base: #ffd1ba;
+      --peach-dark: #ff9e80;
+      --text-dark: #4a4a4a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: white;
+      color: var(--text-dark);
+      min-height: 100vh;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+    }
+
+    nav {
+      width: 100%;
+      background: white;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      border-radius: 0 0 20px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 16px;
+    }
+
+    nav a {
+      color: var(--peach-dark);
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: var(--peach-base);
+      color: white;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 16px;
+    }
+
+    .hamburger span {
+      height: 3px;
+      background: var(--peach-dark);
+      margin: 4px 0;
+      width: 25px;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 700px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+        padding-bottom: 16px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+        align-items: flex-end;
+        margin-left: auto;
+        margin-right: 20px;
+      }
+    }
+    h1 {
+      font-size: 2.2em;
+      margin: 40px 0 20px;
+      text-align: center;
+      color: var(--peach-dark);
+    }
+
+    .compliment {
+      font-size: 2em;
+      font-weight: bold;
+      color: var(--peach-dark);
+      margin: 20px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 10px;
+      background-color: var(--peach-dark);
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: var(--peach-base);
+    }
+
+    .reassurances {
+      margin-top: 30px;
+      max-width: 600px;
+      text-align: center;
+    }
+
+    .reassurances p {
+      margin: 10px 0;
+      font-style: italic;
+      color: var(--peach-dark);
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: radial-gradient(circle, var(--peach-base) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: sparkle 0.8s ease-out forwards;
+      pointer-events: none;
+      z-index: 1000;
+    }
+    .generator {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.generator h2 {
+  color: var(--peach-dark);
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.generator button {
+  padding: 12px 24px;
+  font-size: 1.1em;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--peach-dark);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease;
+}
+
+.generator button:hover {
+  background-color: var(--peach-base);
+}
+
+
+.generated-text {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--peach-dark);
+}
+
+
+    @keyframes sparkle {
+      0% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(2); }
+    }
+
+    @media screen and (max-width: 600px) {
+      h1 { font-size: 1.8em; }
+      .compliment { font-size: 1.5em; }
+      button { font-size: 1em; padding: 10px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html">Compliments</a>
+      <a href="letters.html">Letters</a>
+      <a href="trivia.html">Trivia</a>
+      <a href="meters.html">Meters</a>
+      <!-- You can add more here -->
+    </div>
+  </nav>
+  <h1>Megha, you are <span class="compliment" id="compliment">amazing</span></h1>
+  <div class="buttons">
+    <button onclick="changeCompliment(event)">Thank you ❤️</button>
+    <button onclick="addReassurance(event)">No I'm not 😢</button>
+  </div>
+  <div class="reassurances" id="reassuranceContainer"></div>
+  <div class="generator">
+  <h2>Compliment of the day</h2>
+  <button onclick="generateCompliment()">Generate Compliment ✨</button>
+  <p id="generatedCompliment" class="generated-text"></p>
+</div>
+
+
+  <script>
+    function generateCompliment() {
+  const longCompliments = [
+  "Every single day, I wonder how someone as perfect as you exists. Your smile alone can melt every worry I have, and your laugh feels like music I want to hear forever.",
+  "You make the world brighter just by existing in it. I swear the sun shines a little warmer every time I think of you.",
+  "You are the reason I believe in magic. The way you effortlessly make everything feel better is something I can never put into words.",
+  "There’s a softness in you that calms me, and a fire in you that inspires me. I love every single part of that balance you hold.",
+  "You don’t even try, and yet you manage to be the most beautiful person I’ve ever known—inside and out.",
+  "Your voice could talk about absolutely nothing, and I’d still listen like it’s the most important thing in the world.",
+  "Being with you makes ordinary moments extraordinary. Grocery runs, quiet walks, even sitting in silence feels like magic with you.",
+  "I love how you make me feel safe, loved, and at home—like the entire universe finally makes sense when I’m with you.",
+  "Every time I look at you, I’m reminded how lucky I am to love someone so kind, so beautiful, and so perfectly imperfect.",
+  "You’re my favorite notification, my happiest thought, and my softest memory all at once.",
+  "There’s something in your eyes that feels like home. Like no matter where I go, I’ll always belong when I’m looking at you.",
+  "You have no idea how many times you’ve saved me—just by being yourself, just by being here.",
+  "When you smile, it’s like the world pauses for a moment to admire you, and I can’t blame it.",
+  "If love had a face, it would look like you. If happiness had a name, it would be yours.",
+  "Every part of you is poetry—the way you talk, the way you laugh, the way you love—it’s art in motion.",
+  "You make the stars jealous with how you shine. Even galaxies can’t compete with your glow.",
+  "I never knew what it meant to feel truly safe until I found you. You’re my calm in every storm.",
+  "The thought of you turns even the dullest day into something worth living a thousand times over.",
+  "You are the reason my heart beats faster and slower at the same time. Faster when I see you, slower when I’m wrapped in your peace.",
+  "You’re not just beautiful—you’re everything. Everything good, everything kind, everything I’ve ever dreamed of.",
+  "No matter how long I spend with you, it’s never enough. I’ll always want one more minute, one more hug, one more ‘I love you.’",
+  "You’re the kind of person who could silence every insecurity in me with just one look.",
+  "If I could bottle the feeling of being loved by you, I’d never need anything else in life.",
+  "You have this way of making me feel like I’m exactly where I’m meant to be. That’s a kind of magic no one else has.",
+  "You’re like the first warm day after winter, the first sip of water after a long thirst—you’re everything comforting and beautiful at once.",
+  "Every time I think I’ve figured out all the ways I love you, I find a hundred more.",
+  "You’re proof that perfection exists—not because you’re flawless, but because you’re real and still the most beautiful thing I’ve ever seen.",
+  "Your love feels like home, like the safest place I’ve ever been, and I never want to leave it.",
+  "You’re my favorite part of every day, even the ones I haven’t lived yet.",
+  "The world feels softer, kinder, and warmer with you in it. You make life feel worth it.",
+  "There’s nothing about you that isn’t worth loving—not a single thing.",
+  "You’re the miracle I didn’t know I was waiting for, and now I can’t imagine life without you.",
+  "You’ve turned my life into something I never want to wake up from—a dream I hope never ends.",
+  "Your kindness is rare, your beauty is unmatched, and your love is everything I’ll ever need.",
+  "You could never understand how much better you make my life—how much happier, softer, and brighter everything is with you here.",
+  "You’re not just the love of my life; you’re my best friend, my greatest adventure, and my softest landing.",
+  "Every detail about you—from the way you laugh to the way you care—feels like it was made just for me to fall in love with.",
+  "You’re the sweetest chapter of my story, the one I’ll want to reread for the rest of my life.",
+  "If I could spend forever doing nothing but loving you, I’d consider it the best life possible.",
+  "You don’t even have to try—you’re effortlessly everything I’ve ever wanted.",
+  "You’re like my personal sunrise, painting even my darkest days with light and color.",
+  "I’ve never met someone who feels so much like home and adventure at the same time. That’s what you are to me.",
+  "Even the stars envy you—they look down and wonder how someone could shine brighter than them.",
+  "You’re the calm to my chaos, the spark to my fire, the love I never saw coming but always needed.",
+  "Your love feels like the warmest blanket on the coldest night—safe, comforting, and exactly where I want to be.",
+  "Everything I do, I do with you in mind. You’re the reason behind every smile and every hope I have.",
+  "You make life not just bearable, but beautiful. And I’ll spend forever thanking you for that.",
+  "When I think about forever, the only face I see is yours.",
+  "You’re the rare kind of person who makes even the hardest days worth it, just by being here.",
+  "You’ve made my heart a softer place, and I’ll never stop being grateful for that.",
+  "You’re the most breathtaking part of my day, every day. No matter what’s happening, just knowing you exist makes everything softer and brighter.",
+  "When I think of the future, I can’t see anything without you in it. You’re not just a part of my life—you are my life.",
+  "You’ve changed the way I look at love. You’ve made me believe in forever, in soulmates, and in magic I never thought was real.",
+  "You make the smallest moments—like holding hands or sharing silence—feel like the most extraordinary things in the world.",
+  "Even on my worst days, when everything feels heavy, one thought of you makes it all lighter. You’re my safe space.",
+  "You are the most beautiful contradiction: calm and exciting, soft and powerful, simple and endlessly fascinating.",
+  "I never believed in fate until I met you. Now, I’m certain the universe moved mountains to put you in my life.",
+  "You’ve got this glow about you that makes everyone around you want to be better, kinder, softer—me included.",
+  "Your laugh? It’s my favorite sound. It’s the kind of sound I’d chase to the ends of the Earth just to hear again.",
+  "I fall in love with you more every single day—sometimes for the big things you do, and sometimes for the tiniest details you don’t even notice.",
+  "You make me want to be the best version of myself—not out of pressure, but because you make life worth showing up for.",
+  "You’re proof that love isn’t about grand gestures, it’s about everyday moments that slowly stitch two hearts together.",
+  "I could look at you for hours and still feel like I’ve barely started memorizing how perfect you are.",
+  "The comfort I feel with you is something I didn’t know I needed until I found it—and now I can’t imagine living without it.",
+  "You’re the best part of my mornings, the brightest part of my afternoons, and the sweetest part of my nights.",
+  "Even if I searched the whole world, I’d never find someone who understands me the way you do—who feels like home the way you do.",
+  "You make life feel like a story worth telling, with every chapter better than the last.",
+  "The way you love me—it’s patient, it’s warm, and it’s everything I’ve ever dreamed of. Thank you for being you.",
+  "Every memory I have with you feels like it’s been wrapped in gold—precious, untouchable, perfect.",
+  "I don’t need fireworks or fancy things; just sitting next to you feels like magic enough for me.",
+  "Even my bad days are better when you’re in them. You have this way of turning storms into soft rains.",
+  "You’re my favorite thought, my favorite feeling, and my favorite person—all in one.",
+  "Being around you feels like breathing fresh air after being underwater. You save me in ways I can’t explain.",
+  "You’re not just beautiful—you’re captivating. There’s something about you that keeps me wanting to know more, endlessly.",
+  "I love the way you exist. The way you move, laugh, care, and love—it’s all so uniquely and perfectly you.",
+  "You’re the kind of person that makes the world feel like it was made for love songs and soft sunsets.",
+  "You’ve got this quiet magic—something unexplainable but impossible to ignore. I hope you never lose it.",
+  "I don’t want perfect moments, I want real ones—with you, always you.",
+  "Even after everything, after all the time, I still get butterflies when I see your name on my phone.",
+  "You’re the most comforting thought I have. No matter what happens, I know I’ve got you.",
+  "I didn’t know love could be soft until I met you. I didn’t know it could feel like safety and adventure at once.",
+  "If home had a heartbeat, it would sound like yours.",
+  "Your kindness humbles me. Your love grounds me. And your presence—your presence heals me.",
+  "You make me want to slow down and savor everything—every laugh, every hug, every second with you.",
+  "You’ve become my favorite part of every plan, my favorite person in every crowd, and my favorite face in every dream.",
+  "The world could fall apart tomorrow, but as long as I’m with you, I know I’ll be okay.",
+  "You’re not just someone I love—you’re the best friend I’ve ever had, and the greatest gift I’ve ever received.",
+  "I’ve seen stars, I’ve seen sunsets, I’ve seen oceans. None of them compare to how I feel when I look at you.",
+  "You make love feel effortless, like it’s the most natural thing in the world for us to belong together.",
+  "Every detail about you feels intentional, like the universe carved you out with me in mind.",
+  "You’re my soft landing, my loudest cheerleader, and my quietest peace. I never thought I’d find all three in one person.",
+  "The way you care about people is rare—and I feel so lucky to be someone you choose to care about.",
+  "You’re not just beautiful; you’re soulful. And that’s a kind of beauty that never fades.",
+  "I’ll never stop thanking whatever force brought us together. You’ve turned my life into something extraordinary.",
+  "Your love feels like sunlight streaming through a window—a kind of warmth I never want to lose.",
+  "You’ve got this sparkle about you that even the darkest nights can’t put out.",
+  "You’re the reason my life feels so full, so alive, so worth living every single day.",
+  "No poem, no song, no piece of art could ever capture how much you mean to me—but I’ll keep trying anyway.",
+  "You’re my favorite hello and my hardest goodbye, every single time.",
+  "Even on the days we don’t talk much, just knowing you’re out there makes me happy.",
+  "You’re not just someone I’m in love with; you’re someone I deeply admire.",
+  "Your love feels like finding my favorite song on repeat—familiar, comforting, and always perfect.",
+  "If I could give you anything, it would be the ability to see yourself the way I see you—because then you’d never doubt your worth again.",
+  "You’ve become the highlight of every day—the reason I wake up smiling and the reason I fall asleep happy.",
+  "The world feels less scary and more beautiful with you holding my hand.",
+  "You’ve turned my ‘what ifs’ into ‘I can’t waits’—I can’t wait for every moment we still have ahead of us.",
+  "You’re not just my person—you’re my safe space, my favorite memory, and my greatest adventure."
+  ];
+
+  const compliment = longCompliments[Math.floor(Math.random() * longCompliments.length)];
+  document.getElementById("generatedCompliment").textContent = compliment;
+}
+
+    const compliments = [
+      "amazing", "hot", "sexy", "beautiful", "intelligent", "gorgeous",
+      "radiant", "stunning", "brilliant", "elegant", "charming", "adorable",
+      "precious", "fascinating", "enchanting", "wonderful", "cute", "captivating",
+      "mesmerizing", "breathtaking", "glorious", "delightful", "sparkling",
+      "dazzling", "graceful", "luminous", "lovely", "exquisite", "magnetic",
+      "angelic", "heavenly", "alluring", "bewitching", "dreamy", "radiating",
+      "soft-hearted", "inspiring", "sweet", "witty", "vibrant", "tender",
+      "gentle", "humble", "cheerful", "fearless", "bold", "stylish",
+      "ethereal", "classy", "soulful", "starry-eyed", "endearing",
+      "playful", "snuggly", "sparkly", "sensational", "serene", "sunny",
+      "bubbly", "joyful", "cozy", "affectionate", "compassionate",
+      "intuitive", "thoughtful", "caring", "pure", "soft", "sincere",
+      "vivacious", "fiery", "brave", "artistic", "wondrous", "golden",
+      "melodic", "magical", "supportive", "trustworthy", "nurturing",
+      "radiating love", "kind-hearted", "bold-hearted", "flawless",
+      "outstanding", "extraordinary", "endless", "everlasting",
+      "dream girl", "ultimate crush", "queen", "divine", "sunbeam",
+      "moonlight", "peachy", "rose-like", "poetic", "limitless",
+      "radiant soul", "darling", "treasure", "glimmering", "captivating soul",
+      "bright star", "honeybun", "starlit", "dreamcatcher", "heartbeat",
+      "moon-kissed", "sun-kissed", "pure magic", "gentle wonder", "symphony",
+      "precious gem", "angel eyes", "firefly", "my universe", "my galaxy",
+      "light of my life", "miracle", "rare jewel", "soft sunshine", "wildflower",
+      "my melody", "sweetheart", "sugarplum", "dove", "songbird",
+      "blessing", "soft star", "buttercup", "pearl", "beloved",
+      "my heart", "darling star", "honey drop", "starbeam", "fairytale",
+      "rosebud", "my muse", "glowworm", "butterfly", "spark of joy",
+      "cuddlebug", "daydream", "warm breeze", "moonbeam", "golden hour"
+    ];
+
+    const reassurances = {
+  "amazing": ["You amaze me every single day."],
+  "hot": ["You're the definition of hot."],
+  "sexy": ["You're irresistible in every way."],
+  "beautiful": ["Your beauty is unmatched."],
+  "intelligent": ["You're one of the smartest people I know."],
+  "gorgeous": ["You turn heads everywhere."],
+  "radiant": ["You shine brighter than the sun."],
+  "stunning": ["You take my breath away every time."],
+  "brilliant": ["Your mind is a marvel."],
+  "elegant": ["You carry yourself with such grace."],
+  "charming": ["You charm everyone without trying."],
+  "adorable": ["You're so cute it's unfair."],
+  "precious": ["You're a treasure in my life."],
+  "fascinating": ["I could listen to you talk for hours."],
+  "enchanting": ["You're magic in human form."],
+  "wonderful": ["You make everything better."],
+  "cute": ["You're the definition of adorable."],
+  "captivating": ["I can't look away when you're near."],
+  "mesmerizing": ["You're impossible to ignore."],
+  "breathtaking": ["You leave me speechless every time."],
+  "glorious": ["You light up the world just by existing."],
+  "delightful": ["You're the joy of my life."],
+  "sparkling": ["Your eyes shine like stars."],
+  "dazzling": ["You're absolutely radiant."],
+  "graceful": ["You move with poetry in motion."],
+  "luminous": ["Your soul glows from within."],
+  "lovely": ["You're lovely in every way."],
+  "exquisite": ["You're beauty beyond compare."],
+  "magnetic": ["You're effortlessly attractive."],
+  "angelic": ["You're my angel on earth."],
+  "heavenly": ["You're a dream come true."],
+  "alluring": ["You pull me in with just a look."],
+  "bewitching": ["You're enchantingly beautiful."],
+  "dreamy": ["You're made of everything I dream about."],
+  "radiating": ["You radiate joy and beauty."],
+  "soft-hearted": ["Your kindness touches my soul."],
+  "inspiring": ["You make me want to be better."],
+  "sweet": ["You're sugar, spice, and everything nice."],
+  "witty": ["Your humor is irresistible."],
+  "vibrant": ["You bring color to my world."],
+  "tender": ["Your tenderness is a blessing."],
+  "gentle": ["You're calm and kind like a warm breeze."],
+  "humble": ["You stay grounded even with all your greatness."],
+  "cheerful": ["Your smile is contagious."],
+  "fearless": ["You face life boldly."],
+  "bold": ["You have a fierce, confident soul."],
+  "stylish": ["You’ve got flawless fashion sense."],
+  "ethereal": ["You're not from this world."],
+  "classy": ["You embody sophistication."],
+  "soulful": ["Your presence comforts the heart."],
+  "starry-eyed": ["You remind me of starlight."],
+  "endearing": ["Everything you do makes me adore you more."],
+  "playful": ["You make life more fun just by being you."],
+  "snuggly": ["You’re made for hugs."],
+  "sparkly": ["You're a glittering light in my life."],
+  "sensational": ["You're a show-stopper."],
+  "serene": ["You calm every storm inside me."],
+  "sunny": ["You're like sunshine on a rainy day."],
+  "bubbly": ["Your energy is infectious."],
+  "joyful": ["You bring joy wherever you go."],
+  "cozy": ["You're my safe space."],
+  "affectionate": ["You love in the warmest ways."],
+  "compassionate": ["You feel deeply and beautifully."],
+  "intuitive": ["You understand without words."],
+  "thoughtful": ["You notice every little thing that matters."],
+  "caring": ["You make people feel seen."],
+  "pure": ["You're the most genuine soul."],
+  "soft": ["You're gentle and warm in every way."],
+  "sincere": ["Every word from you feels true."],
+  "vivacious": ["You’re full of life and spirit."],
+  "fiery": ["You burn bright with passion."],
+  "brave": ["You’re courageous even when afraid."],
+  "artistic": ["You bring beauty into everything."],
+  "wondrous": ["You're a marvel in my life."],
+  "golden": ["You shine with warmth and kindness."],
+  "melodic": ["Your voice could soothe stars."],
+  "magical": ["You bring magic into my world."],
+  "supportive": ["You're always there when needed."],
+  "trustworthy": ["I trust you with my heart."],
+  "nurturing": ["You're a gentle guide and comfort."],
+  "radiating love": ["Your love is a force of nature."],
+  "kind-hearted": ["You are kindness in human form."],
+  "bold-hearted": ["You lead with fearless love."],
+  "flawless": ["You're perfect in your own way."],
+  "outstanding": ["You stand above the rest."],
+  "extraordinary": ["You're unlike anyone else."],
+  "endless": ["My admiration for you has no end."],
+  "everlasting": ["You leave a forever impact on me."],
+  "dream girl": ["You're the one from my dreams."],
+  "ultimate crush": ["I can't stop crushing on you."],
+  "queen": ["You rule my heart."],
+  "divine": ["You’re heavenly in every sense."],
+  "sunbeam": ["You warm me like the sun."],
+  "moonlight": ["You soothe me like the moon."],
+  "peachy": ["You're sweet and soft like a peach."],
+  "rose-like": ["Delicate, beautiful, and adored."],
+  "poetic": ["You're a living poem."],
+  "limitless": ["You are without bounds."],
+  "radiant soul": ["You light up my entire world without trying."],
+  "darling": ["You'll forever be my darling, in every lifetime."],
+  "treasure": ["You’re more valuable to me than anything I own."],
+  "glimmering": ["You shine even on my darkest days."],
+  "captivating soul": ["Your soul is too beautiful for words."],
+  "bright star": ["You guide me like a star in the night sky."],
+  "honeybun": ["You're sweeter than any candy I've ever known."],
+  "starlit": ["You glow softly like a starlit night."],
+  "dreamcatcher": ["You catch every bad thought and replace it with love."],
+  "heartbeat": ["You are the rhythm that keeps me alive."],
+  "moon-kissed": ["Your beauty feels like a quiet night under the moon."],
+  "sun-kissed": ["You’re sunshine that lingers on my skin and heart."],
+  "pure magic": ["Being with you feels like living a fairytale."],
+  "gentle wonder": ["You amaze me in the softest, kindest ways."],
+  "symphony": ["Every moment with you is a perfect harmony."],
+  "precious gem": ["You’re rare, valuable, and dazzling to me."],
+  "angel eyes": ["Your eyes are blessings I never deserved."],
+  "firefly": ["You brighten even the smallest corners of my life."],
+  "my universe": ["You’re all I want and everything I need."],
+  "my galaxy": ["You hold every star in my world."],
+  "light of my life": ["Without you, the world feels dim."],
+  "miracle": ["You are my everyday miracle."],
+  "rare jewel": ["No one could ever compare to you."],
+  "soft sunshine": ["You warm me in the gentlest way."],
+  "wildflower": ["You bloom beautifully even in chaos."],
+  "my melody": ["You are the sweetest song I’ve ever heard."],
+  "sweetheart": ["You’re the softest part of my heart."],
+  "sugarplum": ["You make life sweeter every single day."],
+  "dove": ["You bring peace and comfort to my soul."],
+  "songbird": ["Your voice is a lullaby to my worries."],
+  "blessing": ["You’re proof that good things exist in the world."],
+  "soft star": ["You shine quietly yet powerfully in my life."],
+  "buttercup": ["You brighten my day like wildflowers in spring."],
+  "pearl": ["You’re rare, flawless, and timelessly beautiful."],
+  "beloved": ["You are and always will be my beloved."],
+  "my heart": ["You carry my heart wherever you go."],
+  "darling star": ["You’re the brightest star I could wish upon."],
+  "honey drop": ["You’re sweetness in its purest form."],
+  "starbeam": ["You’re the beam of hope I never knew I needed."],
+  "fairytale": ["You make my life feel like a perfect story."],
+  "rosebud": ["You’re delicate and beautiful like a blooming rose."],
+  "my muse": ["You inspire me in everything I create and dream."],
+  "glowworm": ["Your tiny glows light up my whole night."],
+  "butterfly": ["You’re a transformation I’m grateful for every day."],
+  "spark of joy": ["You ignite happiness in my heart every day."],
+  "cuddlebug": ["I want to hold you forever, little cuddlebug."],
+  "daydream": ["You are what I find myself daydreaming about."],
+  "warm breeze": ["You calm me like a soft, summer wind."],
+  "moonbeam": ["You shine in my nights and keep me safe."],
+  "golden hour": ["You are my perfect moment every day."]
+};
+    function changeCompliment(e) {
+      const compliment = compliments[Math.floor(Math.random() * compliments.length)];
+      document.getElementById("compliment").textContent = compliment;
+      document.getElementById("reassuranceContainer").innerHTML = "";
+      createSparkle(e);
+    }
+
+    function addReassurance(e) {
+      const current = document.getElementById("compliment").textContent;
+      const messages = reassurances[current] || ["I mean it."];
+      const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+
+      const container = document.getElementById("reassuranceContainer");
+      container.innerHTML = "";
+      const p = document.createElement("p");
+      p.textContent = randomMsg;
+      p.style.color = "var(--peach-dark)";
+      p.style.fontStyle = "italic";
+      container.appendChild(p);
+      createSparkle(e);
+    }
+
+    function createSparkle(e) {
+      const sparkle = document.createElement("div");
+      sparkle.className = "sparkle";
+      document.body.appendChild(sparkle);
+      sparkle.style.left = e.clientX + "px";
+      sparkle.style.top = e.clientY + "px";
+      setTimeout(() => sparkle.remove(), 800);
+    }
+    function toggleMenu() {
+      document.getElementById('nav-links').classList.toggle('active');
+    }
+
+  </script>
+</body>
+</html>
