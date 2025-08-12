@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trivia - Megha</title>
+  <style>
+    :root {
+      --peach-light: #fff6f0;
+      --peach-base: #ffd1ba;
+      --peach-dark: #ff9e80;
+      --text-dark: #4a4a4a;
+      --peach-soft: #ffcbc4;
+      --correct-bg: #ffe8d9;
+      --wrong-bg: #ffe5e5;
+      --border: #ffe3d6;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: white;
+      color: var(--text-dark);
+      min-height: 100vh;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: fadeIn 0.6s ease-in;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><g opacity="0.07" fill="none" stroke="%23ffcba5" stroke-width="2"><path d="M10 30 Q20 10 30 30 T50 30" /><path d="M60 30 Q70 10 80 30 T100 30" /><path d="M110 30 Q120 10 130 30 T150 30" /></g><g opacity="0.04" fill="none" stroke="%23ffcba5" stroke-width="1"><circle cx="50" cy="50" r="20" /><circle cx="150" cy="150" r="25" /></g></svg>');
+      background-repeat: repeat;
+    }
+
+    /* --- Navigation --- */
+    nav {
+      width: 100%;
+      background: white;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      border-radius: 0 0 20px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 16px;
+    }
+
+    nav a {
+      color: var(--peach-dark);
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: var(--peach-base);
+      color: white;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 16px;
+    }
+
+    .hamburger span {
+      height: 3px;
+      background: var(--peach-dark);
+      margin: 4px 0;
+      width: 25px;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 700px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+        padding-bottom: 16px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+        align-items: flex-end;
+        margin-left: auto;
+        margin-right: 20px;
+      }
+    }
+    .menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  z-index: 1001;
+  padding: 10px;
+  margin-right: 20px;
+}
+
+.menu-toggle span {
+  height: 3px;
+  width: 25px;
+  background: #ff9770;
+  margin: 4px 0;
+  border-radius: 2px;
+}
+
+    h1 {
+      font-size: 2.2em;
+      margin: 40px 0 20px;
+      text-align: center;
+      color: var(--peach-dark);
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+    }
+
+    .question {
+      background: white;
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      padding: 25px;
+      margin: 25px 0;
+      width: 95%;
+      max-width: 700px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .question:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+    }
+
+    .question p {
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .options label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--peach-light);
+      padding: 10px 16px;
+      margin: 8px 0;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+      border: 2px solid transparent;
+    }
+
+    .options input[type="radio"] {
+      display: none;
+    }
+
+    .correct::after,
+    .wrong::after {
+      display: none;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+
+    .selected.correct::after {
+      content: '✔';
+      display: inline;
+      color: var(--peach-dark);
+    }
+
+    .selected.wrong::after {
+      content: '✖';
+      display: inline;
+      color: var(--peach-dark);
+    }
+
+    .selected.wrong {
+      background: var(--wrong-bg);
+      border-color: var(--peach-dark);
+    }
+
+    .selected.correct {
+      background: var(--correct-bg);
+      border-color: var(--peach-dark);
+    }
+
+    .correct.show::after {
+      content: '✔';
+      display: inline;
+      color: var(--peach-dark);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html">Compliments</a>
+      <a href="letters.html">Letters</a>
+      <a href="trivia.html">Trivia</a>
+      <a href="meters.html">Meters</a>
+      <!-- You can add more here -->
+    </div>
+  </nav>
+
+  <h1>Trivia Topic: Women of India</h1>
+  <div id="quiz-container"></div>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('nav-links').classList.toggle('active');
+    }
+
+    const data = [
+       {
+    question: "Who was the first woman Prime Minister of India?",
+    options: ["Indira Gandhi", "Sarojini Naidu", "Pratibha Patil", "Sonia Gandhi"],
+    answer: "Indira Gandhi" // Correct
+  },
+  {
+    question: "Who was the first woman President of India?",
+    options: ["Sushma Swaraj", "Indira Gandhi", "Meira Kumar", "Pratibha Patil"],
+    answer: "Pratibha Patil" // Correct
+  },
+  {
+    question: "Who was the first woman Chief Minister of an Indian state?",
+    options: ["Mayawati", "Mamata Banerjee", "Sucheta Kripalani", "Jayalalithaa"],
+    answer: "Sucheta Kripalani" // Correct
+  },
+  {
+    question: "Who was the first woman Governor of an Indian state?",
+    options: ["Sarojini Naidu", "Vijay Lakshmi Pandit", "Indira Gandhi", "Pratibha Patil"],
+    answer: "Sarojini Naidu" // Correct
+  },
+  {
+    question: "Who was the first woman Speaker of the Lok Sabha?",
+    options: ["Indira Gandhi", "Sumitra Mahajan", "Meira Kumar", "Sarojini Naidu"],
+    answer: "Meira Kumar" // Correct
+  }
+];
+
+    const container = document.getElementById('quiz-container');
+
+    data.forEach((item, index) => {
+      const qDiv = document.createElement('div');
+      qDiv.className = 'question';
+      const qId = `q${index}`;
+      qDiv.innerHTML = `<p>${index + 1}. ${item.question}</p><div class="options"></div>`;
+
+      const optionsDiv = qDiv.querySelector('.options');
+      item.options.forEach((opt, i) => {
+        const optId = `${qId}_opt${i}`;
+        const label = document.createElement('label');
+        label.setAttribute('for', optId);
+        label.textContent = opt;
+        if (opt === item.answer) label.classList.add('correct');
+
+        const input = document.createElement('input');
+        input.type = 'radio';
+        input.name = qId;
+        input.id = optId;
+
+        label.prepend(input);
+        optionsDiv.appendChild(label);
+      });
+
+      container.appendChild(qDiv);
+    });
+
+    const questions = document.querySelectorAll('.question');
+    questions.forEach(q => {
+      const inputs = q.querySelectorAll('input[type="radio"]');
+      inputs.forEach(input => {
+        input.addEventListener('change', () => {
+          const labels = q.querySelectorAll('label');
+          labels.forEach(label => label.classList.remove('selected', 'wrong', 'show'));
+
+          inputs.forEach(i => {
+            const label = q.querySelector(`label[for="${i.id}"]`);
+            if (i.checked) {
+              if (label.classList.contains('correct')) {
+                label.classList.add('selected', 'correct');
+              } else {
+                label.classList.add('selected', 'wrong');
+                const correctLabel = q.querySelector('label.correct');
+                correctLabel.classList.add('show');
+              }
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
