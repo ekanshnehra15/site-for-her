@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Trivia — 15/08/2025</title>
+  <meta name="theme-color" content="#FFB59E" />
+  <link rel="stylesheet" href="css/m3-peach.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
+</head>
+<body>
+  <!-- App Bar -->
+  <header class="appbar" role="banner">
+    <div class="appbar-inner">
+      <button class="nav-btn" id="openDrawer" aria-label="Open navigation" title="Menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <div class="title">Trivia · 15 Aug 2025</div>
+      <div class="spacer"></div>
+    </div>
+  </header>
+
+  <!-- Secondary progress bar -->
+  <div class="secondary-progress" id="secondaryProgress">
+    <div class="bar-fill" id="secondaryProgressFill"></div>
+  </div>
+
+  <!-- Navigation Drawer -->
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <div class="panel" role="dialog" aria-modal="true" aria-label="Navigation">
+      <nav class="nav-list">
+        <a class="nav-link" href="index.html">Compliments</a>
+        <a class="nav-link" href="letters.html">Letters</a>
+        <a class="nav-link active" href="trivia.html">Trivia</a>
+        <a class="nav-link" href="meters.html">Meters</a>
+        <a class="nav-link" href="game.html">Game</a>
+      </nav>
+    </div>
+    <div class="scrim" id="scrim" tabindex="-1" aria-label="Close navigation"></div>
+  </aside>
+
+  <main class="wrap" id="content" role="main">
+    <!-- Header card with progress -->
+    <section class="header-card" id="headerCard">
+      <div class="page-title">Independence Day ✨</div>
+      <div class="page-sub">Select answers for all questions, then click Submit to see results.</div>
+      <div class="progress" aria-live="polite">
+        <div class="bar"><div class="bar-fill" id="progressFill"></div></div>
+        <div class="score-badge"><span id="answeredCount">0</span>/<span id="total">0</span></div>
+      </div>
+    </section>
+
+    <!-- Quiz list -->
+    <section class="list" id="quiz"></section>
+
+    <!-- Sticky action bar -->
+    <section class="actionbar">
+      <div class="action-inner">
+        <button class="btn btn-tonal" id="btnReset">
+          <span class="material-symbols-rounded">restart_alt</span>
+          Reset
+        </button>
+        <button class="btn btn-primary" id="btnSubmit" disabled>
+          <span class="material-symbols-rounded">check_circle</span>
+          Submit
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/trivia.js"></script>
+</body>
+</html>
