@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Game</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+:root {
+    --peach-bg:#ffe9df;
+    --peach:#ffd3c4;
+    --peach-mid:#ffc1ad;
+    --peach-accent:#ff9d80;
+    --peach-accent-darker:#ff835f;
+    --ink:#5a3d32;
+    --radius:22px;
+    --shadow:0 6px 18px -8px rgba(120,60,30,.25);
+    --trans:.45s cubic-bezier(.55,.15,.15,1);
+    font-family:"Inter",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+    min-height:100dvh;
+    display:flex;
+    flex-direction:column;
+    background:linear-gradient(140deg,var(--peach-bg),var(--peach));
+    color:var(--ink);
+    line-height:1.35;
+    overflow-x:hidden;
+}
+header{
+    position:sticky;top:0;
+    padding:1rem 1.4rem;
+    display:flex;justify-content:space-between;align-items:center;
+    z-index:60;
+    backdrop-filter:blur(12px);
+    background:rgba(255,240,232,.55);
+    border-bottom:1px solid rgba(255,140,100,.25);
+}
+.logo{
+    font-weight:600;
+    font-size:1.05rem;
+    letter-spacing:.5px;
+    padding:.55rem 1rem;
+    background:var(--peach-mid);
+    border-radius:40px;
+    box-shadow:var(--shadow);
+    display:inline-flex;align-items:center;gap:.4rem;
+    animation:popIn .65s .25s both;
+}
+.logo:before{
+    content:"★";
+    font-size:.85rem;
+    color:var(--peach-accent-darker);
+    filter:drop-shadow(0 2px 4px rgba(255,120,80,.3));
+    animation:twinkle 3.2s infinite;
+}
+@keyframes twinkle{0%,92%,100%{transform:scale(1);opacity:.9;}50%{transform:scale(1.35) rotate(20deg);opacity:1;}}
+button#menuBtn{
+    all:unset;cursor:pointer;
+    width:46px;height:46px;display:grid;place-items:center;
+    border-radius:18px;position:relative;
+    background:var(--peach-accent);
+    box-shadow:var(--shadow);
+    transition:var(--trans);
+    animation:popIn .6s .3s both;
+}
+button#menuBtn:hover{background:var(--peach-accent-darker);transform:translateY(-3px) scale(1.04);}
+button#menuBtn:active{transform:translateY(0) scale(.94);}
+.bars,.bars:before,.bars:after{
+    content:"";width:22px;height:3px;background:#fff;
+    position:absolute;border-radius:3px;transition:var(--trans);
+}
+.bars:before{transform:translateY(-7px);}
+.bars:after{transform:translateY(7px);}
+button[aria-expanded="true"] .bars{background:transparent;}
+button[aria-expanded="true"] .bars:before{transform:rotate(41deg);}
+button[aria-expanded="true"] .bars:after{transform:rotate(-41deg);}
+nav{
+    position:fixed;inset:0;
+    padding:calc(clamp(2.5rem,6vw,4rem) + 60px) clamp(2.5rem,6vw,4rem) clamp(2.5rem,6vw,4rem);
+    backdrop-filter:blur(30px) saturate(140%);
+    background:linear-gradient(155deg,rgba(255,207,188,.92),rgba(255,155,120,.88));
+    display:flex;flex-direction:column;gap:2.4rem;
+    transform:translateX(100%);
+    transition:var(--trans);
+    z-index:55;
+}
+nav.open{transform:translateX(0);}
+nav ul{list-style:none;display:grid;gap:1rem;margin:0;padding:0;}
+nav a{
+    display:flex;gap:.8rem;align-items:center;
+    font-size:clamp(1.2rem,2.4vw,1.6rem);font-weight:500;
+    color:var(--ink);text-decoration:none;
+    padding:1rem 1.4rem;
+    background:rgba(255,255,255,.55);
+    border:1px solid rgba(255,150,110,.35);
+    border-radius:30px;
+    backdrop-filter:blur(6px);
+    transition:var(--trans);
+    position:relative;overflow:hidden;
+}
+nav a:before{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(90deg,rgba(255,180,150,.8),rgba(255,120,90,.6));
+    opacity:0;transition:var(--trans);mix-blend-mode:overlay;
+}
+nav a:hover:before{opacity:.85;}
+nav a:hover{transform:translateY(-6px);box-shadow:0 10px 30px -10px rgba(255,110,70,.5);}
+main.coming{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:2.5rem 1.4rem 3rem;
+    animation:fadeSlide .8s .15s both;
+}
+h1{
+    margin:0 0 1rem;
+    font-size:clamp(2.1rem,6vw,3.2rem);
+    font-weight:600;
+    background:linear-gradient(100deg,var(--ink),var(--peach-accent-darker));
+    -webkit-background-clip:text;
+    color:transparent;
+}
+p.tag{
+    font-size:clamp(.95rem,1.2vw,1.05rem);
+    background:rgba(255,255,255,.55);
+    padding:1rem 1.35rem;
+    border:1px solid rgba(255,140,100,.25);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    max-width:560px;
+}
+footer{
+    padding:1.6rem 1rem 2.2rem;
+    text-align:center;
+    font-size:.7rem;
+    opacity:.65;
+    animation:fadeSlide .8s .3s both;
+}
+@keyframes fadeSlide{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+@keyframes popIn{0%{opacity:0;transform:scale(.7) translateY(10px);}70%{opacity:1;transform:scale(1.03);}100%{transform:scale(1);opacity:1;}}
+@media (prefers-reduced-motion:reduce){
+    *{animation:none !important;transition:.2s linear !important;}
+}
+</style>
+</head>
+<body>
+<header>
+    <div class="logo">Game</div>
+    <button id="menuBtn" aria-label="Menu" aria-expanded="false"><span class="bars"></span></button>
+</header>
+
+<nav id="navPanel" aria-hidden="true">
+    <ul>
+        <li><a href="compliments.html">Compliments</a></li>
+        <li><a href="letters.html">Letters</a></li>
+        <li><a href="trivia.html">Trivia</a></li>
+        <li><a href="game.html" aria-current="page">Game</a></li>
+        <li><a href="open-when.html">Open When...</a></li>
+    </ul>
+</nav>
+
+<main class="coming">
+    <h1>Coming Soon…</h1>
+    <p class="tag">;)</p>
+</main>
+
+<footer>ily &lt;3</footer>
+
+<script>
+const menuBtn=document.getElementById('menuBtn');
+const nav=document.getElementById('navPanel');
+
+menuBtn.addEventListener('click',()=>{
+    const open=menuBtn.getAttribute('aria-expanded')==='true';
+    menuBtn.setAttribute('aria-expanded',String(!open));
+    nav.classList.toggle('open',!open);
+    nav.setAttribute('aria-hidden',String(open));
+});
+
+nav.addEventListener('click',e=>{
+    if(e.target.matches('a')){
+        menuBtn.setAttribute('aria-expanded','false');
+        nav.classList.remove('open');
+        nav.setAttribute('aria-hidden','true');
+    }
+});
+</script>
+</body>
+</html>
